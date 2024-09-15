@@ -1,5 +1,7 @@
-/wd/cache/poetry/*
-/wd/cache/renv/*
+/wd/cache/poetry/
+!/wd/cache/poetry/.dummy
+/wd/cache/renv/
+!/wd/cache/renv/.dummy
 
-!/wd/proj/scripts
 /wd/proj/*
+!/wd/proj/scripts/

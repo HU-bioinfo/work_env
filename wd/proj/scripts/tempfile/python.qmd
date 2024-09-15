@@ -1,0 +1,45 @@
+---
+title: "Quarto Python Example"
+author: "Your Name"
+format: html
+---
+
+## Introduction
+
+This is a Quarto document with embedded Python code.
+
+## Python Code Example
+
+Below is a simple Python code example that computes the sum of two numbers.
+
+```{python}
+# Define two numbers
+a = 5
+b = 3
+
+# Compute the sum
+sum_ab = a + b
+
+# Print the result
+sum_ab
+```
+
+```{python}
+import matplotlib.pyplot as plt
+
+# Data
+x = [1, 2, 3, 4, 5]
+y = [2, 3, 5, 7, 11]
+
+# Create the plot
+plt.figure(figsize=(8, 4))
+plt.plot(x, y, marker='o', linestyle='-', color='b')
+
+# Add titles and labels
+plt.title('Simple Plot')
+plt.xlabel('X axis')
+plt.ylabel('Y axis')
+
+# Show the plot
+plt.grid(True)
+plt.show()

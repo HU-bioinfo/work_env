@@ -1,0 +1,44 @@
+---
+title: "Quarto R Example"
+author: "Your Name"
+format: html
+---
+
+## Introduction
+
+This is a Quarto document with embedded R code.
+
+## R Code Example
+
+Below is a simple R code example that computes the sum of two numbers.
+
+```{r}
+# Define two numbers
+a <- 5
+b <- 3
+
+# Compute the sum
+sum_ab <- a + b
+
+# Print the result
+sum_ab
+```
+
+```{r}library(ggplot2)
+
+# Data
+data <- data.frame(
+  x = c(1, 2, 3, 4, 5),
+  y = c(2, 3, 5, 7, 11)
+)
+
+# Create the plot
+plot <- ggplot(data, aes(x = x, y = y)) +
+  geom_line() +
+  geom_point() +
+  ggtitle('Simple Plot') +
+  xlab('X axis') +
+  ylab('Y axis')
+
+# Print the plot
+print(plot)
