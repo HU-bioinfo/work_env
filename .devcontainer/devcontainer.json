@@ -1,0 +1,23 @@
+{
+    "name": "dev container",
+    "image": "kokeh/dev:0.2",
+    "runArgs": [
+    //   "--gpus", "all" // GPUが必要な場合のオプション
+    ],
+    "workspaceFolder": "/home/proj",
+    "extensions": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "reditorsupport.r",
+        "rdebugger.r-debugger",
+        "quarto.quarto",
+        "ms-toolsai.jupyter",
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "mounts": [
+        "source=/home/kohta/work_env/wd,target=/home,type=bind,consistency=cached"
+    ],
+    "postStartCommand": "cd /home/proj"
+  }

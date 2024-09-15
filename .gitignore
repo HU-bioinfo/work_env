@@ -1,0 +1,5 @@
+/wd/cache/poetry/*
+/wd/cache/renv/*
+
+!/wd/proj/scripts
+/wd/proj/*
