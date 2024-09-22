@@ -15,7 +15,6 @@ ENV PYTHON_VERSION="3.12" \
     R_VERSION="4.4" \
     UV_CACHE_DIR="/home/$USERNAME/cache/uv" \
     RENV_PATHS_ROOT="/home/$USERNAME/cache/renv" \
-    RENV_PATHS_SANDBOX="$RENV_PATHS_ROOT/sandbox" \
     R_HOME="/usr/local/etc/R" \
     R_ENVIRON="/usr/local/etc/R/.Renviron" \
     R_PROFILE="/usr/local/etc/R/.Rprofile" \  
