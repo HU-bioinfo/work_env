@@ -1,7 +1,7 @@
 # 初期設定
 
 1. dockerをインストールする。
-2. `docker pull kokeh/dev_slim:0.2`を実行する。
+2. `docker pull kokeh/dev_slim:0.1.2`を実行する。
 3. gitをインストールする。
 4. `git clone git@github.com:kohta-hatanaka/work_env.git`を好きな場所(ホームディレクトリとか)で実行する。
 

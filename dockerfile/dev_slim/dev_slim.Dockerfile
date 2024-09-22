@@ -4,7 +4,7 @@
 #RUN /build_scripts/install_deps.sh 
 #dev_slim:0.1.1
 
-FROM dev_slim:0.1.1
+FROM kokeh\dev_slim:0.1.1
 
 ARG USERNAME=user
 ARG GROUPNAME=user
