@@ -12,3 +12,5 @@
 /wd/R/*
 /wd/.bashhistory
 /wd/.cache
+/wd/.config/*
+/wd/.local/*
