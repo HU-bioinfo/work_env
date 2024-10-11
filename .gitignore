@@ -4,13 +4,7 @@
 /wd/cache/renv/*
 !/wd/cache/renv/.dummy
 
-/wd/proj/*/*
-!/wd/proj/scripts/
-!/wd/proj/*/
-!/wd/proj/*/*.lock
+/wd/proj/*
 
-/wd/R/*
-/wd/.bashhistory
 /wd/.cache
-/wd/.config/*
-/wd/.local/*
+/wd/.Trash-1000
