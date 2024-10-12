@@ -1,8 +1,15 @@
 #!/bin/sh
 
-uv init /home/user/wd/proj/$1
-cd /home/user/wd/proj/$1
-R --no-save
-Rscript -e 'print("done")' --no-save
-rm .git -r
-rm .gitignore
+dir_path="/home/user/wd/proj/$1"
+
+if [ -d $dir_path ]; then
+    echo "$dir_path exists. Try in another name."
+fi
+if [ ! -d $dir_path ]; then
+    uv init $dir_path
+    cd $dir_path
+    R --no-save
+    Rscript -e 'print("done")' --no-save
+    rm .git -r
+    rm .gitignore
+fi

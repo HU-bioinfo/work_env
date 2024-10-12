@@ -1,10 +1,17 @@
 #!/bin/bash
 
-cd /home/user/wd/proj/$1
+dir_path="/home/user/wd/proj/$1"
 
-uv run ipython kernel install --user --name=$1-py
+if [ -d $dir_path ]; then
+    cd $dir_path
 
-Rscript -e "
-library(IRkernel)
-IRkernel::installspec(name = '$1-r')
-"
+    uv run ipython kernel install --user --name=$1-py
+
+    Rscript -e "
+    library(IRkernel)
+    IRkernel::installspec(name = '$1-r')
+    "
+fi
+if [ ! -d $dir_path ]; then
+    echo "$dir_path doesn't exist. Check the proj name."
+fi
