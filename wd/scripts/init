@@ -4,3 +4,5 @@ uv init /home/user/wd/proj/$1
 cd /home/user/wd/proj/$1
 R --no-save
 Rscript -e 'print("done")' --no-save
+rm .git -r
+rm .gitignore
