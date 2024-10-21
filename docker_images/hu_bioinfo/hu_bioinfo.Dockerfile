@@ -45,4 +45,4 @@ COPY scripts/install_jupyter.sh /build_scripts/install_jupyter.sh
 RUN /build_scripts/install_jupyter.sh 
 
 ENV PATH=/home/user/wd/scripts:/home/user/.local/bin:$PATH
-
+COPY scripts/.Rprofile $R_PROFILE

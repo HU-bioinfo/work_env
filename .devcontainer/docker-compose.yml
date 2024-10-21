@@ -1,0 +1,14 @@
+services:
+  container:
+    image: kokeh/hu_bioinfo:0.0.1
+    ports:
+      - "8888:8888"
+      - "8080:8080"
+    environment:
+      - DISABLE_AUTH=true
+      - GITHUB_PAT=${GITHUB_PAT}
+    volumes:
+      - ../wd:/home/user/wd
+    env_file:
+      - .env
+    command: sleep infinity
