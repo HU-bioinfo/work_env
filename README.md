@@ -4,19 +4,17 @@
 北大Bioinfo研究会での解析用レポジトリです。
 
 ## 準備
-### (windowsユーザーのみ) WSLの有効化
-1. 管理者としてPowerShellを起動し、コマンドを実行する。
-    ```PowerShell
-    wsl --install
-    ```
-以下(WSLと書いてある場合、windowsユーザーはWSL内で実行する事)
+### (Macユーザーのみ) Homebrewのダウンロード
+[Homebrew](https://brew.sh/ja/)とは，大雑把に言えばプログラマー用のApp Storeです．
+欲しいアプリやフォントなどを黒い画面に文字を打ち込むことでダウンロードすることができます．
 
-### git
-1. 以下のコマンドでgitをインストールする。(WSL内)
-    ```bash
-    sudo apt-get update
-    sudo apt-get install git gh
+1. ターミナルアプリを開き，以下のコマンドを実行し,Homebrewを自分のPCで使えるようにする
+    ```zsh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
+
+### Git
+Gitとは**ファイルやプロジェクトの過去の状態を記録しておくツール**です．例えば，何かの作業をして途中でミスをしてしまったり，別のアイディアを試してみたくなった場合，Gitを使っておけばいつでも好きな時点の状態に戻ることができます．
 
 ### Github
 1. GitHubのアカウントを作成する。
@@ -41,31 +39,6 @@
 2. .envのGITHUB_PATに先ほど取得したGithub Personal Access Tokenを設定する。
 
 ### docker
-1. クローンしたレポジトリに移動。(WSL内)
-2. rootでプログラムを実行して、dockerをインストールする。(WSL内)
-    ```bash
-    sudo -s
-    source docker_init.sh
-    exit
-    ```
-3. インストール確認
-    ```bash
-    docker --version
-   ```
-4. ユーザーの有効化
-    ```bash
-    cat /etc/group | grep docker
-    sudo gpasswd -a (user name) docker
-    exit(一回ログアウト)
-    ```
-5. 動作確認
-    ```bash
-    docker run hello-world
-    ```
-3. 使用するdockerイメージをダウンロードする
-    ```bash
-    docker pull kokeh/hu_bioinfo:latest
-    ```
 
 ## 使い方
 下記のコマンドを実行して、docker contaierを起動する。  
