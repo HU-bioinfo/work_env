@@ -10,11 +10,15 @@
 
 1. ターミナルアプリを開き，以下のコマンドを実行し,Homebrewを自分のPCで使えるようにする
     ```zsh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
 ### Git
 Gitとは**ファイルやプロジェクトの過去の状態を記録しておくツール**です．例えば，何かの作業をして途中でミスをしてしまったり，別のアイディアを試してみたくなった場合，Gitを使っておけばいつでも好きな時点の状態に戻ることができます．
+
+![](/images/Screenshot 2024-10-22 at 19.21.06.png)
+
+Mac userの場合，デフォルトでgitがダウンロードされています．
 
 ### Github
 1. GitHubのアカウントを作成する。
