@@ -5,35 +5,82 @@
 
 ## 準備
 ### (Macユーザーのみ) Homebrewのダウンロード
-[Homebrew](https://brew.sh/ja/)とは，大雑把に言えばプログラマー用のApp Storeです．
-欲しいアプリやフォントなどを黒い画面に文字を打ち込むことでダウンロードすることができます．
+[Homebrew](https://brew.sh/ja/)とは，適当に言えばプログラマー用のApp Storeです．
 
-1. ターミナルアプリを開き，以下のコマンドを実行し,Homebrewを自分のPCで使えるようにする
+欲しいアプリやフォントなどを，黒い画面に文字を打ち込むことでダウンロードすることができます．
+
+1. ターミナルアプリを開き，以下のコマンドを実行し,Homebrewを自分のPCで使えるようにしてしまえ
     ```zsh
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
 ### Git
-Gitとは**ファイルやプロジェクトの過去の状態を記録しておくツール**です．例えば，何かの作業をして途中でミスをしてしまったり，別のアイディアを試してみたくなった場合，Gitを使っておけばいつでも好きな時点の状態に戻ることができます．
+Gitとは**ファイルやプロジェクトの過去の状態を記録しておくツール**です．
 
-![](/images/Screenshot 2024-10-22 at 19.21.06.png)
+例えば，何かの作業をして途中でミスをしてしまったり，別のアイディアを試してみたくなった場合，Gitを使っておけばいつでも好きな時点の状態に戻ることができます．
 
-Mac userの場合，デフォルトでgitがダウンロードされています．
+Gitを使って小説や論文を書いている人もいるらしい．
+
+![gitを使わない例　もうメチャクチャである](/images/Screenshot 2024-10-22 at 19.21.06.png)
+![gitを使用した例　スッキリ](/images/Screenshot 2024-10-22 at 19.21.06.png)
+
+他にもいろんな機能があるけど，追々．
+
+Mac userの場合，デフォルトでGitがダウンロードされています．
 
 ### Github
+GitHubはGitを使って管理しているプロジェクトをインターネット上に保存して，他の人と共有・協力できる場所です.そしてお前が今見ているサイトのことでもあります．
+
+アカウント作るついでに，今後使うであろう機能も知っておきましょう．
+GitHubにおける **Access Token（アクセストークン）** は， **GitHubへの安全なアクセスを許可するための「鍵」** のようなものです．これは，パスワードの代わりに使われるもので，特にセキュリティを強化するために使われます．
+
 1. GitHubのアカウントを作成する。
 2. GitHub Personal Access Tokenを作成する。
     - [GitHubの設定](https://github.com/settings/tokens)から「Generate new token」をクリック
     - Repository access : All repositories
     - Permissions : Repository permissions -> Contents -> Read and Writeを選択
     - 「Generate token」をクリック
-    - 表示されたトークンをコピーしてどこかに保存する(公開してはいけない)
+    - 表示されたトークンをコピーしてどこかに保存する (大事な物なので誰にも見せてはいけない)
+
+### Docker
+Dockerは、アプリケーションの実行環境をコンテナという形でパッケージ化し、どこでも同じ環境で動かせるようにするためのツールです．
+
+大雑把に訳すと，チームで一緒に作業する時、みんなのパソコンが違うと動かないことがありますよね．Dockerを使えば，みんなが同じ環境で作業できるので，「このパソコンでは動くのに、あのパソコンでは動かない！」という問題を防げます．
+どこでも同じように動かせて，軽くて速くて，効率がよくて，どこにでも持ち運べるのがDockerのいいところです．
+
+やっぱり，他にもいろんな機能があるけど，追々．
+
+1. [Docker](https://www.docker.com/products/docker-desktop)をHomebrewを使ってインストールする。
+    ```zsh
+    brew install --cask docker
+    ```
+2. アプリケーションからDockerを開き，アカウント設定を完了する．
+3. インストール確認
+    ```zsh
+    docker --version
+    ```
+4. 
+
+dockerコマンドを使用するときはDockerアプリを立ち上げておく必要があるので注意．
+使用した後はDockerアプリを終了するのを忘れずに．
+
 
 ### Editor
-1. VSCode または Cursorをインストールする。
-    - [VScodeの公式サイト](https://code.visualstudio.com/download)からOSに対応したインストーラーをダウンロードしてインストール
-    - [Cursorの公式サイト](https://cursor.sh/)からインストーラーをダウンロードしてインストール
-2. 拡張機能「Dev Containers」「Remote Explorer」「Docker」をインストールする。
+プログラミングにおける「エディタ」とは，**コードを書くためのテキスト編集ソフトウェアのこと**です．プログラミングのエディタは、普通のメモ帳のようなテキストエディタと似ていますが，**プログラムを書くのに便利な機能**が色々と付いています．
+
+有名どころに[VSCode](https://code.visualstudio.com/)とかいろいろあります．
+
+
+1. [VSCode](https://code.visualstudio.com/) または [Cursor](https://cursor.sh/)をHomebrewを使ってインストールする。
+    ```zsh
+    brew install --cask visual-studio-code
+    ```
+    or
+    ```zsh
+    brew install --cask cursor
+    ```
+
+2. 拡張機能「[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)」「Remote Explorer」「Docker」をインストールする。
 
 ### 解析用レポジトリのセットアップ
 1. リポジトリをローカルにクローンする。
@@ -42,7 +89,6 @@ Mac userの場合，デフォルトでgitがダウンロードされています
     ```
 2. .envのGITHUB_PATに先ほど取得したGithub Personal Access Tokenを設定する。
 
-### docker
 
 ## 使い方
 下記のコマンドを実行して、docker contaierを起動する。  
@@ -58,7 +104,6 @@ jupyterの起動などは今後追加していく予定。
 
 注：メモリの消費が激しくなるため、vscodeを利用する際はホスト側(WSLを使っているときはwindows側)からのみ接続する事を推奨。
 将来的にはdocker内でjupyter起動→ホスト側からサーバーに接続する形で実行する事を目標。
-
 
 
 ## セットアップ手順
