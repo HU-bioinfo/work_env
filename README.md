@@ -21,8 +21,8 @@ Gitとは**ファイルやプロジェクトの過去の状態を記録してお
 
 Gitを使って小説や論文を書いている人もいるらしい．
 
-![gitを使わない例　もうメチャクチャである](/images/Screenshot 2024-10-22 at 19.21.06.png)
-![gitを使用した例　スッキリ](/images/Screenshot 2024-10-22 at 19.21.06.png)
+![gitを使わない例　もうメチャクチャである]()
+![gitを使用した例　スッキリ]()
 
 他にもいろんな機能があるけど，追々．
 
@@ -59,10 +59,18 @@ Dockerは、アプリケーションの実行環境をコンテナという形�
     ```zsh
     docker --version
     ```
-4. 
+4. 動作確認
+    ```zsh
+    docker run hello-world
+    ```
+5. 使用するdockerイメージをダウンロードする
+    ```zsh
+    docker pull kokeh/hu_bioinfo:latest
+    ```
 
 dockerコマンドを使用するときはDockerアプリを立ち上げておく必要があるので注意．
 使用した後はDockerアプリを終了するのを忘れずに．
+細かい話は次回以降で．
 
 
 ### Editor
@@ -80,7 +88,7 @@ dockerコマンドを使用するときはDockerアプリを立ち上げてお�
     brew install --cask cursor
     ```
 
-2. 拡張機能「[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)」「Remote Explorer」「Docker」をインストールする。
+2. 拡張機能「[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)」「[Remote Explorer](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-explorer)」「[Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)」をインストールする。
 
 ### 解析用レポジトリのセットアップ
 1. リポジトリをローカルにクローンする。
