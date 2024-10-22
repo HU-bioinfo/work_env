@@ -10,3 +10,5 @@
 
 /wd/.cache
 /wd/.Trash-1000
+
+.devcontainer/.env

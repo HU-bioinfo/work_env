@@ -1,6 +1,6 @@
 services:
   container:
-    image: kokeh/hu_bioinfo:0.0.1
+    image: kokeh/hu_bioinfo:latest
     ports:
       - "8888:8888"
       - "8080:8080"

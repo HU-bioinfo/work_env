@@ -46,3 +46,9 @@ RUN /build_scripts/install_jupyter.sh
 
 ENV PATH=/home/user/wd/scripts:/home/user/.local/bin:$PATH
 COPY scripts/.Rprofile $R_PROFILE
+
+USER root
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gh
+
+USER user

@@ -15,7 +15,7 @@
 1. 以下のコマンドでgitをインストールする。(WSL内)
     ```bash
     sudo apt-get update
-    sudo apt-get install git
+    sudo apt-get install git gh
     ```
 
 ### Github
@@ -42,9 +42,25 @@
 
 ### docker
 1. クローンしたレポジトリに移動。(WSL内)
-2. プログラムを実行して、dockerをインストールする。(WSL内)
+2. rootでプログラムを実行して、dockerをインストールする。(WSL内)
     ```bash
-    sudo docker_init.sh
+    sudo -s
+    source docker_init.sh
+    exit
+    ```
+3. インストール確認
+    ```bash
+    docker --version
+   ```
+4. ユーザーの有効化
+    ```bash
+    cat /etc/group | grep docker
+    sudo gpasswd -a (user name) docker
+    exit(一回ログアウト)
+    ```
+5. 動作確認
+    ```bash
+    docker run hello-world
     ```
 3. 使用するdockerイメージをダウンロードする
     ```bash
