@@ -24,7 +24,7 @@ Gitを使って小説や論文を書いている人もいるらしい．
 ![gitを使わない例 何が完成品かわからない](https://github.com/user-attachments/assets/cc9265c3-f4ce-479d-b268-3b2bb68e95b3)
 gitを使わない例 何が完成品かわからない
 
-![gitを使用した例 スッキリ]()
+![gitを使用した例 スッキリ](https://github.com/user-attachments/assets/f9ae4b05-f6e4-4c6e-8b9d-0dd2624bc8a6)
 gitを使用した一例 その時々で何をしたかがわかる
 
 他にもいろんな機能があるけど，追々．
