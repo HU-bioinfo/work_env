@@ -36,7 +36,7 @@
 ### 解析用レポジトリのセットアップ
 1. リポジトリをローカルにクローンする。
     ```bash
-    git clone https://github.com/kohta-hatanaka/work_env.git
+    git clone https://github.com/HU-bioinfo/work_env.git
     ```
 2. .envのGITHUB_PATに先ほど取得したGithub Personal Access Tokenを設定する。
 
