@@ -10,4 +10,16 @@ apt-get update
 apt-get install r-rig --no-install-recommends
 
 # if uv python is installed here, only root user can use that. -> install at install_jupyter.sh
+
 rig add $R_VERSION
+
+mkdir /usr/local/etc/R
+
+Rscript --no-site-file -e '
+    install.packages("renv", lib="/opt/R/4.4.1/lib/R/library")
+    install.packages("languageserver", lib="/opt/R/4.4.1/lib/R/library")
+    install.packages("IRkernel", lib="/opt/R/4.4.1/lib/R/library")
+    install.packages("BiocManager", lib="/opt/R/4.4.1/lib/R/library")
+    '
+
+echo 'RENV_CONFIG_AUTOLOADER_ENABLED=FALSE' >> $R_ENVIRON

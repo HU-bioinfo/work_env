@@ -6,11 +6,11 @@ if [ -d $dir_path ]; then
     echo "$dir_path exists. Try in another name."
 fi
 if [ ! -d $dir_path ]; then
-    uv init $dir_path
+    cd /home/user/wd/proj
+    uv init $1
     cd $dir_path
-    uv venv
-    R --no-save
-    Rscript -e 'print("done")' --no-save
+    # uv venv
+    Rscript -e 'library(renv)' -e 'renv::init()' -e 'q()' --no-save
     
     rm .git -r
     rm .gitignore
