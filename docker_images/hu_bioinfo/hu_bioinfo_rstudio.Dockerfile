@@ -39,16 +39,8 @@ RUN apt-get purge -y --auto-remove apt-utils build-essential && \
     apt-get autoremove -y && \
     apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/* 
-    # && \
-    # chmod -R 777 /build_scripts
     
 USER user
 WORKDIR /home/user/
-
-COPY scripts/install_jupyter.sh /build_scripts/install_jupyter.sh
-RUN /build_scripts/install_jupyter.sh
-# RUN cat /build_scripts/.profile >> /home/user/.bashrc
-    # && \
-    # rm -r /build_scripts
 
 ENV PATH=/home/user/wd/scripts:/home/user/.local/bin:$PATH

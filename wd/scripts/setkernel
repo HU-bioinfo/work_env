@@ -7,12 +7,6 @@ if [ -d $dir_path ]; then
 
     uv add ipykernel
     uv run ipython kernel install --user --name=$1-py
-
-    Rscript -e "
-    renv::install('IRkernel')
-    library(IRkernel)
-    IRkernel::installspec(name = '$1-r')
-    "
 fi
 if [ ! -d $dir_path ]; then
     echo "$dir_path doesn't exist. Check the proj name."

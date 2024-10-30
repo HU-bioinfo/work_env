@@ -1,10 +1,6 @@
 if (!"utils" %in% loadedNamespaces()) {library(utils)} 
-
 if (file.exists("renv.lock")) {
     renv::load()
-    if (!requireNamespace("BiocManager", quietly = T)){
-        renv::install("BiocManager", prompt=FALSE)
-    }
 
     library(BiocManager)
     options(
@@ -13,13 +9,4 @@ if (file.exists("renv.lock")) {
         repos = c(CRAN = "https://p3m.dev/cran/__linux__/bookworm/latest")
     )
     options(repos = BiocManager::repositories())
-}else{
-    current_wd <- getwd()
-    base_dir <- "/home/user/wd/proj"
-
-    if (startsWith(current_wd, base_dir) && current_wd != base_dir) {
-        library(renv)
-        renv::init()
-        q()
-    }
 }
