@@ -1,0 +1,13 @@
+#!/bin/bash
+
+dir_path="/home/user/wd/proj/$1"
+
+if [ -d $dir_path ]; then
+    cd $dir_path
+
+    uv add ipykernel
+    uv run ipython kernel install --user --name=$1-py
+fi
+if [ ! -d $dir_path ]; then
+    echo "$dir_path doesn't exist. Check the proj name."
+fi

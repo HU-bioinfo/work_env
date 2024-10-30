@@ -1,0 +1,11 @@
+#!/bin/bash
+
+dir_path="/home/user/wd/proj/$1"
+
+if [ ! -d $dir_path ]; then
+    echo "$dir_path doesn't exist. Check the proj name."
+fi
+if [ -d $dir_path ]; then
+    rm $dir_path -r
+    echo "$dir_path has been removed."
+fi
