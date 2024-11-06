@@ -1,6 +1,9 @@
 services:
   container:
-    image: kokeh/hu_bioinfo:slim
+    image: kokeh/hu_bioinfo:latest
+    ports:
+      - "8888:8888"
+      - "8080:8080"
     environment:
       - DISABLE_AUTH=true
       - GITHUB_PAT=${GITHUB_PAT}
