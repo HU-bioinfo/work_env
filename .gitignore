@@ -5,8 +5,8 @@
 !/wd/cache/renv/.dummy
 
 /wd/proj/*/*
-!/wd/proj/*/*.lock
-!/wd/proj/*/*.toml
+# !/wd/proj/*/*.lock
+# !/wd/proj/*/*.toml
 
 /wd/.cache
 /wd/.Trash-1000
