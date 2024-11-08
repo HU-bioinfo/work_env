@@ -1,6 +1,7 @@
 if (!"utils" %in% loadedNamespaces()) {library(utils)} 
 if (file.exists("renv.lock")) {
     renv::load()
+    .libPaths(c(.libPaths(), "/opt/R/4.4.1/lib/R/library"))
 
     library(BiocManager)
     options(
