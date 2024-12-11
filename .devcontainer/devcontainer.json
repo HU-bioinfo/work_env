@@ -6,7 +6,8 @@
         "vscode": {
             "extensions": [
                 "ms-python.python",
-                "REditorsupport.r"
+                "REditorsupport.r",
+                "github.copilot"
             ],
             "settings": {
                 "r.rterm.linux": "/usr/local/bin/R",

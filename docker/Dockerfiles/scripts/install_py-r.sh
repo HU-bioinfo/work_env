@@ -1,6 +1,6 @@
 # curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local" sh
 apt-get install apt-utils -y --no-install-recommends
-wget -qO- https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local" sh
+wget -qO- https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/bin" sh
 
 # curl -L https://rig.r-pkg.org/deb/rig.gpg -o /etc/apt/trusted.gpg.d/rig.gpg
 wget -qO /etc/apt/trusted.gpg.d/rig.gpg https://rig.r-pkg.org/deb/rig.gpg
@@ -15,11 +15,11 @@ rig add $R_VERSION
 
 mkdir /usr/local/etc/R
 
-Rscript --no-site-file -e '
-    install.packages("renv", lib="/opt/R/4.4.1/lib/R/library")
-    install.packages("languageserver", lib="/opt/R/4.4.1/lib/R/library")
-    install.packages("IRkernel", lib="/opt/R/4.4.1/lib/R/library")
-    install.packages("BiocManager", lib="/opt/R/4.4.1/lib/R/library")
-    '
+# Rscript --no-site-file -e "
+    # install.packages('renv', lib='/home/user/R/x86_64-pc-linux-gnu-library/$R_VERSION')
+    # install.packages('languageserver', lib='/home/user/R/x86_64-pc-linux-gnu-library/$R_VERSION')
+    # install.packages('IRkernel', lib='/home/user/R/x86_64-pc-linux-gnu-library/$R_VERSION')
+    # install.packages('BiocManager', lib='/home/user/R/x86_64-pc-linux-gnu-library/$R_VERSION')
+    # "
 
 echo 'RENV_CONFIG_AUTOLOADER_ENABLED=FALSE' >> $R_ENVIRON

@@ -1,13 +1,14 @@
 FROM debian:bookworm-slim
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 COPY scripts/install_deps.sh /build_scripts/install_deps.sh 
 RUN /build_scripts/install_deps.sh 
 
 ENV LANG=en_US.UTF-8 \ 
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8 \
-    TZ=Asia/Tokyo \
-    DEBIAN_FRONTEND=noninteractive
+    TZ=Asia/Tokyo 
     
 COPY scripts/add_users.sh /build_scripts/add_users.sh
 RUN /build_scripts/add_users.sh && \
@@ -39,5 +40,8 @@ RUN apt-get purge -y --auto-remove apt-utils build-essential && \
     
 USER user
 WORKDIR /home/user/
+
+COPY scripts/setup_in_user.sh /home/user/wd/scripts/setup_in_user.sh
+RUN /home/user/wd/scripts/setup_in_user.sh
 
 ENV PATH=/home/user/wd/scripts:/home/user/.local/bin:$PATH

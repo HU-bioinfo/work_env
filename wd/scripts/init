@@ -17,4 +17,9 @@ if [ ! -d $dir_path ]; then
     rm hello.py
     rm README.md
     rm .python-version
+    
+    mkdir codes
+    mkdir data
+    mkdir codes/lib
+    mkdir output
 fi
