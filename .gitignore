@@ -12,3 +12,5 @@
 /wd/.Trash-1000
 
 .devcontainer/.env
+
+/singularity/sif/*

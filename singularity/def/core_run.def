@@ -1,0 +1,12 @@
+BootStrap: localimage
+From:/mnt/p/work_env/singularity/sif/core.sif
+
+
+%runscript
+    if [ -z "$WD_CACHE_DIR" || ! -d "$WD_CACHE_DIR" ]; then
+        echo "Error: WD_CACHE_DIR is not defined or does not exist." >&2
+        exit 1
+    fi
+    export UV_CACHE_DIR="$WD_CACHE_DIR/uv"
+    export RENV_PATHS_ROOT="$WD_CACHE_DIR/uv"
+    exec /bin/bash

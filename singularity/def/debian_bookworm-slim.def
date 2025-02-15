@@ -1,0 +1,10 @@
+Bootstrap: docker
+From: debian:bookworm-slim
+
+%post
+    apt-get update && apt-get install -y \
+    curl \
+    vim \
+
+%runscript
+    /bin/bash

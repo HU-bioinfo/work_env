@@ -1,0 +1,21 @@
+BootStrap: docker
+From: debian:bookworm-slim
+
+%environment
+    export DEBIAN_FRONTEND=noninteractive
+    export PYTHON_VERSION="3.12"
+    export R_VERSION="4.4"
+    export UV_PYTHON_PREFERENCE="only-managed"
+    export UV_PYTHON_INSTALL_DIR="/opt/Python"
+    export R_HOME="/usr/local/etc/R"
+    export R_ENVIRON="/usr/local/etc/R/.Renviron"
+    export R_PROFILE="/usr/local/etc/R/.Rprofile"
+    export RENV_CONFIG_AUTOLOADER_ENABLED=FALSE
+
+%files
+    /mnt/p/work_env/singularity/def/scripts/install_py-r.sh /build_scripts/install_py-r.sh
+
+%post
+    apt-get update
+    apt-get install direnv -y --no-install-recommends
+    /build_scripts/install_py-r.sh
