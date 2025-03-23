@@ -1,0 +1,24 @@
+BootStrap: docker
+From: debian:bookworm-slim
+
+%environment
+    export DEBIAN_FRONTEND=noninteractive
+
+%files
+    /mnt/c/Users/kohta/Desktop/work_env/container/scripts/build.env /etc/build.env
+    /mnt/c/Users/kohta/Desktop/work_env/container/scripts/install_py.sh /build_scripts/install_py.sh
+    /mnt/c/Users/kohta/Desktop/work_env/container/scripts/install_r.sh /build_scripts/install_r.sh
+
+%post
+    apt-get update
+    apt-get install apt-utils wget ca-certificates direnv -y --no-install-recommends
+    apt-get update
+
+    . /etc/build.env
+    /build_scripts/install_py.sh
+    /build_scripts/install_r.sh
+
+    apt-get purge -y --auto-remove apt-utils build-essential 
+    apt-get autoremove -y 
+    apt-get autoclean -y 
+    rm -rf /var/lib/apt/lists/*

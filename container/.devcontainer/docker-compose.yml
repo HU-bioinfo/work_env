@@ -5,7 +5,7 @@ services:
       - DISABLE_AUTH=true
       - GITHUB_PAT=${GITHUB_PAT}
     volumes:
-      - ../wd:/home/user/wd
+      - ../../wd:/home/user/wd
     env_file:
       - .env
     command: sleep infinity

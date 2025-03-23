@@ -18,7 +18,8 @@ sudo apt-get install -y \
     squashfs-tools-ng \
     uidmap \
     wget \
-    zlib1g-dev
+    zlib1g-dev \
+    make
 
 export GOVERSION=1.23.5 OS=linux ARCH=amd64  # change this as you need
 

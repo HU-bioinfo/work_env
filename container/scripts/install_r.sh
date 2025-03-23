@@ -4,7 +4,9 @@ apt-get update
 apt-get install r-rig --no-install-recommends
 
 rig add $R_VERSION
-mkdir /usr/local/etc/R
+mkdir /usr/local/etc/R -p
+mkdir /usr/local/lib/R/site-library/ -p
+chmod -R 777 /usr/local/lib/R/site-library/
 echo 'RENV_CONFIG_AUTOLOADER_ENABLED=FALSE' >> $R_ENVIRON
 
 Rscript --no-site-file -e "
