@@ -1,5 +1,7 @@
-groupadd -g 1000 normal 
-useradd -m -s /bin/bash -u 1000 -g 1000 user 
+#!/bin/bash
+
+groupadd -g 1001 normal 
+useradd -m -s /bin/bash -u 1001 -g 1001 user 
 passwd -d user
 
 sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen 

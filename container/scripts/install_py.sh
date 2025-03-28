@@ -1,3 +1,5 @@
+#!/bin/bash
+
 wget -qO- https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/bin" sh
 
 # export PYTHON_VERSION="3.12"
