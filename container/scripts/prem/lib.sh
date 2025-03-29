@@ -50,7 +50,7 @@ set_venv() {
     mkdir -p $ENV_DIR/$proj_name
     mv $proj_path/.venv $ENV_DIR/$proj_name/.venv
     ln -s $ENV_DIR/$proj_name/.venv $proj_path/.venv
-        echo "source $BASE_ENV_DIR/python/$python_env/.venv/bin/activate" >> "$proj_path/.envrc"
+        echo "source .venv/bin/activate" >> "$proj_path/.envrc"
 
     rm main.py
     rm README.md

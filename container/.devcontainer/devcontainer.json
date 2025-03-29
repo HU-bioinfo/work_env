@@ -16,7 +16,8 @@
                   "--no-restore"
                 ],
                 "r.lsp.path": "/usr/local/bin/R",
-                "r.sessionWatcher": true
+                "r.sessionWatcher": true,
+                "search.followSymlinks": false
             }
         }
     },

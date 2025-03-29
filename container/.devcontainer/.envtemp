@@ -1,5 +1,1 @@
 GITHUB_PAT="your_github_pat"
-# PREM_DIR is directory which stores cache and env file.
-PREM_DIR=""
-# PROJ_DIR is your project directory.
-PROJ_DIR=""

@@ -22,10 +22,3 @@ mkdir -p $RENV_PATHS_ROOT
 mkdir -p $ENV_DIR
 
 source /usr/local/bin/prem/install.sh
-
-# DevContainerとの互換性のために、コマンドライン引数があれば実行し、なければbashを実行
-# if [ $# -gt 0 ]; then
-#     exec "$@"
-# else
-#     exec /bin/bash
-# fi
