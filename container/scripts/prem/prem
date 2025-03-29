@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set +e
-set -euo pipefail
+#set -euo pipefail
+set -x
 
 # スクリプトのディレクトリを取得
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
@@ -29,10 +30,13 @@ if [ $# -lt 2 ]; then
     usage
 else
     COMMAND=$1
-    shift 1  # 最初の2つの引数を削除し、残りをオプションとして扱う
+    shift 1  # 最初の1つの引数を削除し、残りをオプションとして扱う
 
     # コマンド実行
     case "$COMMAND" in
+        init)
+            init "$@"
+            ;;
         # 環境作成
         mkenv)
             mkenv "$@"
@@ -41,6 +45,10 @@ else
         # 環境削除
         rmenv) 
             rmenv "$@"
+            ;;
+        
+        rm_all)
+            rm_all "$@"
             ;;
 
         # プロジェクト作成
@@ -53,12 +61,8 @@ else
             ;;
 
         # プロジェクトの環境変更
-        setproj)
-            if [ "$#" -lt 3 ]; then
-                echo "Usage: setproj proj-name -p python-env-name -r r-env-name"
-            else
-                setproj "$TARGET" "$@"
-            fi
+        setenv)
+            setenv "$@"
             ;;
 
         # プロジェクト削除
