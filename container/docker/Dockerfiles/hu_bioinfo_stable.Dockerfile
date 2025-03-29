@@ -20,6 +20,13 @@ RUN eval export $(grep -v '^#' /etc/build.env | xargs) && \
     apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/* 
 
+COPY /scripts/install_deps.sh /build_scripts/install_deps.sh
+
+RUN /build_scripts/install_deps.sh && \
+    apt-get autoremove -y && \
+    apt-get autoclean -y && \
+    rm -rf /var/lib/apt/lists/* 
+
 COPY /scripts/.Rprofile /usr/local/etc/R/.Rprofile
 COPY /scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY /scripts/prem/ /usr/local/bin/prem/
@@ -27,4 +34,5 @@ COPY /scripts/prem/ /usr/local/bin/prem/
 USER user
 WORKDIR /home/user/
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh", "-i"]
+RUN cat /usr/local/bin/entrypoint.sh >> /home/user/.bashrc
+# ENTRYPOINT ["/usr/local/bin/entrypoint.sh", "-i"]

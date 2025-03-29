@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set +e
 #set -euo pipefail
-set -x
 
 # スクリプトのディレクトリを取得
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
@@ -15,18 +14,14 @@ source "$SCRIPT_DIR/lib.sh"
 usage() {
     echo "Usage: prem <command> <target> [options]"
     echo "Commands:"
-    echo "  mkenv      make new environment."
-    echo "  rmenv      Execute 'hoge' on target"
-    echo "  mkproj     Execute 'hoge' on target"
-    echo "  setenv     Execute 'hoge' on target"
-    echo "  rmproj     Execute 'hoge' on target"
-    echo "Options:"
-    echo "  -o=yes    Example option"
+    echo "  init <proj_name> [-py / -r]     initialize project"
+    echo "  list                            show projects list"
+    echo "  rm <proj_name>                  remove project"
+    echo "  rm_all                          remove all projects"
 }
 
 # 引数チェック
-if [ $# -lt 2 ]; then
-    log_error "Invalid arguments."
+if [ $# -lt 1 ]; then
     usage
 else
     COMMAND=$1
@@ -37,43 +32,19 @@ else
         init)
             init "$@"
             ;;
-        # 環境作成
-        mkenv)
-            mkenv "$@"
+            
+        list)
+            list "$@"
             ;;
-
-        # 環境削除
-        rmenv) 
-            rmenv "$@"
+        
+        rm)
+            rm_proj "$@"
             ;;
         
         rm_all)
             rm_all "$@"
             ;;
-
-        # プロジェクト作成
-        mkproj)
-            if [ "$#" -lt 3 ]; then
-                echo "Usage: mkproj proj-name -p python-env-name -r r-env-name"
-            else
-                mkproj "$TARGET" "$@"
-            fi
-            ;;
-
-        # プロジェクトの環境変更
-        setenv)
-            setenv "$@"
-            ;;
-
-        # プロジェクト削除
-        rmproj)
-            if [ "$#" -ne 1 ]; then
-                echo "Usage: rmproj proj-name"
-            else
-                rmproj "$TARGET"
-            fi
-            ;;
-
+            
         *)
             log_error "Unknown command: $COMMAND"
             usage

@@ -15,11 +15,17 @@ export PATH="$(uv python list | grep $PYTHON_VERSION | awk '{print $2}' | xargs 
 export UV_CACHE_DIR="$PREM_DIR/cache/uv"
 export RENV_PATHS_ROOT="$PREM_DIR/cache/renv"
 export ENV_DIR="$PREM_DIR/env"
+export LC_ALL=ja_JP.UTF-8
 
 mkdir -p $UV_CACHE_DIR
 mkdir -p $RENV_PATHS_ROOT
 mkdir -p $ENV_DIR
 
-source ~/work_env/container/scripts/prem/install.sh
+source /usr/local/bin/prem/install.sh
 
-exec /bin/bash
+# DevContainerとの互換性のために、コマンドライン引数があれば実行し、なければbashを実行
+# if [ $# -gt 0 ]; then
+#     exec "$@"
+# else
+#     exec /bin/bash
+# fi

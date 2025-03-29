@@ -1,4 +1,6 @@
 apt-get update
+apt-get upgrade -y
+apt-get install -y --fix-broken 
 apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
@@ -42,8 +44,7 @@ apt-get install -y --no-install-recommends \
     libx11-dev \
     libxt-dev \
     make \
-    libmariadb-dev-compat \
-    libmariadb-dev \
+    default-libmysqlclient-dev \
     unixodbc-dev \
     libnode-dev \
     default-jdk \
@@ -66,3 +67,6 @@ apt-get install -y --no-install-recommends \
     libfribidi-dev \
     libharfbuzz-dev \
     libudunits2-dev
+
+    # libmariadb-dev-compat \
+    # libmariadb-dev \
