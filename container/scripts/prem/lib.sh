@@ -124,3 +124,38 @@ rm_all() {
         echo "Cancelled"
     fi
 }
+
+clone() {
+    local proj_name=$1
+    local proj_path="$PROJ_DIR/$proj_name"
+    local clone_source_path=$2
+    local usage_msg="Usage: prem clone <project_name> <clone_source_path>" 
+    
+    if [ "$#" -ne 2 ]; then
+        log_error "Invalid number of arguments"
+        echo $usage_msg
+        return 1
+    else
+        if [ ! -d "$clone_source_path" ]; then
+            log_error "Clone source path does not exist"
+            return 1
+        elif [ ! -d "$proj_path" ]; then
+            log_error "Project $proj_name does not exist"
+            return 1
+        else
+            cp -r $clone_source_path/codes $proj_path
+            cp -r $clone_source_path/data $proj_path
+            cp -r $clone_source_path/output $proj_path
+            cp -r $clone_source_path/pyproject.toml $proj_path
+            cp -r $clone_source_path/uv.lock $proj_path
+            cp -r $clone_source_path/renv.lock $proj_path
+            
+            cd $proj_path
+            uv sync
+            Rscript -e 'renv::restore()' -e 'q()' --no-save
+            cd $PWD
+            
+            log_info "Project $proj_name cloned from $clone_source_path."
+        fi
+    fi
+}

@@ -14,10 +14,11 @@ source "$SCRIPT_DIR/lib.sh"
 usage() {
     echo "Usage: prem <command> <target> [options]"
     echo "Commands:"
-    echo "  init <proj_name> [-py / -r]     initialize project"
-    echo "  list                            show projects list"
-    echo "  rm <proj_name>                  remove project"
-    echo "  rm_all                          remove all projects"
+    echo "  init <proj_name> [-py / -r]     :initialize project"
+    echo "  list                            :show projects list"
+    echo "  rm <proj_name>                  :remove project"
+    echo "  rm_all                          :remove all projects"
+    echo "  clone <proj_name> <source_path> :clone project"
 }
 
 # 引数チェック
@@ -43,6 +44,10 @@ else
         
         rm_all)
             rm_all "$@"
+            ;;
+            
+        clone)
+            clone "$@"
             ;;
             
         *)

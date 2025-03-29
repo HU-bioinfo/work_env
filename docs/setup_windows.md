@@ -40,7 +40,7 @@
 2. rootでプログラムを実行して、dockerをインストールする。(WSL内)
     ```bash
     sudo -s
-    source docker_init.sh
+    source docker_install.sh
     exit
     ```
 3. インストール確認
@@ -59,5 +59,5 @@
     ```
 3. 使用するdockerイメージをダウンロードする
     ```bash
-    docker pull kokeh/hu_bioinfo:latest
+    docker pull kokeh/hu_bioinfo:stable
     ```
