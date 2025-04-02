@@ -28,11 +28,12 @@ RUN /build_scripts/install_deps.sh && \
     rm -rf /var/lib/apt/lists/* 
 
 COPY /scripts/.Rprofile /usr/local/etc/R/.Rprofile
-COPY /scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY /scripts/prem/ /usr/local/bin/prem/
+COPY /scripts/add_bashrc.sh /usr/local/bin/add_bashrc.sh
+COPY /scripts/.envrc /usr/local/etc/.envrctemp
+COPY /scripts/prem/ /usr/local/etc/prem/
 
 USER user
 WORKDIR /home/user/
 
-RUN cat /usr/local/bin/entrypoint.sh >> /home/user/.bashrc
+RUN cat /usr/local/bin/add_bashrc.sh >> /home/user/.bashrc
 # ENTRYPOINT ["/usr/local/bin/entrypoint.sh", "-i"]

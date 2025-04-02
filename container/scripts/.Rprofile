@@ -3,8 +3,6 @@ if (!"utils" %in% loadedNamespaces()) {
 }
 
 if (file.exists("renv.lock")) {
-    print("renv.lock found. Loading renv.")
-
     global_lib_dir <- .libPaths()[1]
     renv::load()
     .libPaths(c(.libPaths(), global_lib_dir))
