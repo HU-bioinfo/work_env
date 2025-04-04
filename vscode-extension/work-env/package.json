@@ -3,9 +3,10 @@
   "displayName": "work-env",
   "publisher": "hu-bioinfo-workshop",
   "description": "Work environment for R/Python analysis and development",
-  "version": "1.0.1",
+  "repository": "https://github.com/HU-bioinfo/work_env",
+  "version": "1.0.0",
   "engines": {
-    "vscode": "^1.98.0"
+    "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
@@ -19,11 +20,11 @@
     "commands": [
       {
         "command": "work-env.start-work-env",
-        "title": "work-env:Start work-env"
+        "title": "work-env: Start work-env"
       },
       {
         "command": "work-env.reset-config",
-        "title": "work-env:Reset work-env Config"
+        "title": "work-env: Reset work-env Config"
       }
     ]
   },
@@ -41,7 +42,7 @@
     "@types/chai": "^5.2.1",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "^1.98.0",
+    "@types/vscode": "^1.96.0",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
     "@vscode/test-cli": "^0.0.10",

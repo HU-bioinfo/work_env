@@ -13,12 +13,14 @@ source "$SCRIPT_DIR/lib.sh"
 # ヘルプメッセージ
 usage() {
     echo "Usage: prem <command> <target> [options]"
+    echo ""
     echo "Commands:"
-    echo "  init <proj_name> [-py / -r]     :initialize project"
-    echo "  list                            :show projects list"
-    echo "  rm <proj_name>                  :remove project"
-    echo "  rm_all                          :remove all projects"
-    echo "  clone <proj_name> <source_path> :clone project"
+    echo "  init <proj_name> [-py | -r]     : Initialize a new project"
+    echo "  list                            : Show a list of existing projects"
+    echo "  rm <proj_name>                  : Remove a specific project"
+    echo "  rm_all                          : Remove all projects"
+    echo "  adjust <proj_name>              : Configure the project for this environment"
+    echo "  relink                          : Recreate environment symbolic links for all projects"
 }
 
 # 引数チェック
@@ -46,8 +48,12 @@ else
             rm_all "$@"
             ;;
             
-        clone)
-            clone "$@"
+        adjust)
+            adjust "$@"
+            ;;
+        
+        relink)
+            relink "$@"
             ;;
             
         *)

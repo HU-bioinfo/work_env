@@ -32,6 +32,9 @@ COPY /scripts/add_bashrc.sh /usr/local/bin/add_bashrc.sh
 COPY /scripts/.envrc /usr/local/etc/.envrctemp
 COPY /scripts/prem/ /usr/local/etc/prem/
 
+RUN mkdir -p /home/user/cache && \
+    mkdir -p /home/user/proj
+
 USER user
 WORKDIR /home/user/
 

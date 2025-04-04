@@ -4,11 +4,11 @@ services:
     environment:
       - DISABLE_AUTH=true
       - GITHUB_PAT=${GITHUB_PAT}
-      - PREM_DIR="/home/user/prem"
+      - CACHE_DIR="/home/user/cache"
       - PROJ_DIR="/home/user/proj"
     volumes:
-      - $PREM_DIR:/home/user/prem
-      - $PROJ_DIR:/home/user/proj
+      - ../projects:/home/user/cache
+      - ../../cache:/home/user/proj
     env_file:
       - .env
     command: sleep infinity

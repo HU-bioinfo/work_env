@@ -127,37 +127,46 @@ rm_all() {
     fi
 }
 
-clone() {
+adjust() {
     local proj_name=$1
     local proj_path="$PROJ_DIR/$proj_name"
-    local clone_source_path=$2
-    local usage_msg="Usage: prem clone <project_name> <clone_source_path>" 
+    local usage_msg="Usage: prem adapt <project_name>"
     
-    if [ "$#" -ne 2 ]; then
+    if [ "$#" -ne 1 ]; then
         log_error "Invalid number of arguments"
         echo $usage_msg
         return 1
-    else
-        if [ ! -d "$clone_source_path" ]; then
-            log_error "Clone source path does not exist"
-            return 1
-        elif [ ! -d "$proj_path" ]; then
-            log_error "Project $proj_name does not exist"
-            return 1
-        else
-            cp -r $clone_source_path/codes $proj_path
-            cp -r $clone_source_path/data $proj_path
-            cp -r $clone_source_path/output $proj_path
-            cp -r $clone_source_path/pyproject.toml $proj_path
-            cp -r $clone_source_path/uv.lock $proj_path
-            cp -r $clone_source_path/renv.lock $proj_path
-            
-            cd $proj_path
-            uv sync
-            Rscript -e 'renv::restore()' -e 'q()' --no-save
-            cd $PWD
-            
-            log_info "Project $proj_name cloned from $clone_source_path."
-        fi
     fi
+    if [ ! -d "$proj_path" ]; then
+        log_error "Project $proj_name does not exist"
+        return 1
+    fi
+
+    if [ "$(stat -c %u $proj_path)" -eq "$(id -u)" ]; then
+        if [ -d "$proj_path/.venv" ]; then
+            mv $proj_path/.venv $ENV_DIR/$proj_name/.venv
+            ln -s $ENV_DIR/$proj_name/.venv $proj_path/.venv
+            echo "source .venv/bin/activate" >> "$proj_path/.envrc"
+            direnv allow $proj_path
+        fi
+        if [ -d "$proj_path/renv" ]; then
+            mv $proj_path/renv $ENV_DIR/$proj_name/renv
+            ln -s $ENV_DIR/$proj_name/renv $proj_path/renv
+        fi
+    else
+        log_error "Project $proj_name is not owned by the current user"
+        echo "Run 'sudo chown -R 1001 $proj_name' in the project directory outside of this container"
+        return 1
+    fi
+}
+
+relink() {
+    for dir in "$PROJ_DIR"/*/; do
+        [ -d "$dir" ] || continue  # ディレクトリでない場合はスキップ
+            rm -f "$dir/.venv"
+            rm -f "$dir/renv"
+            ln -s "$ENV_DIR/${dir##*/}/.venv" "$dir/.venv"
+            ln -s "$ENV_DIR/${dir##*/}/renv" "$dir/renv"
+        fi
+    done
 }

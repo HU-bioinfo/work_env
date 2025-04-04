@@ -12,6 +12,11 @@ export function activate(context: vscode.ExtensionContext) {
 
     let startWorkEnvCommand = vscode.commands.registerCommand('work-env.start-work-env', async () => {
         try{
+            // docker imageの更新
+            await vscode.commands.executeCommand("workbench.action.terminal.new");
+            const terminal = vscode.window.activeTerminal;
+            terminal?.sendText("docker pull kokeh/hu_bioinfo:stable");
+            
             // .devcontainer の設定
             if (!fs.existsSync(devcontainerPath)) {
                 vscode.window.showInformationMessage("Setting up .devcontainer...");
@@ -33,6 +38,10 @@ export function activate(context: vscode.ExtensionContext) {
     
     let resetConfigCommand = vscode.commands.registerCommand('work-env.reset-config', async () => {
         try {
+            await vscode.commands.executeCommand("workbench.action.terminal.new");
+            const terminal = vscode.window.activeTerminal;
+            terminal?.sendText("docker pull kokeh/hu_bioinfo:stable");
+
             if (!fs.existsSync(devcontainerPath)) {
                 vscode.window.showInformationMessage("First, run 'Start work-env'");
                 return;
@@ -43,8 +52,6 @@ export function activate(context: vscode.ExtensionContext) {
             if (!success) return;
 
             // 一度現在存在しているこのextension用のdocker containerを削除
-            await vscode.commands.executeCommand("workbench.action.terminal.new");
-            const terminal = vscode.window.activeTerminal;
             terminal?.sendText("docker rm -f $(docker ps -aq --filter 'name=hu-bioinfo-workshop' --filter 'name=work-env')");
             
             // remote-containers.openFolder コマンドで開く
@@ -112,14 +119,24 @@ async function generateDockerCompose(context: vscode.ExtensionContext, dockercom
         vscode.window.showErrorMessage("GitHub PAT is required.");
         return false;  // 失敗
     }
-    
-    const replacements: Record<string, string> = {
-        GITHUB_PAT: githubPat,
-        CACHE_FOLDER: cacheFolder,
-        PROJECT_FOLDER: projectFolder
-    };
+
+    try{
+        await vscode.commands.executeCommand("workbench.action.terminal.new");
+        const terminal = vscode.window.activeTerminal;
+        terminal?.sendText(`chmod 777 "${projectFolder}"`);
+        terminal?.sendText(`chmod 777 "${cacheFolder}"`);
+    } catch (error) {
+        vscode.window.showErrorMessage("Permission occur: chmod folders.");
+        return false;
+    }
 
     try {
+        const replacements: Record<string, string> = {
+            GITHUB_PAT: githubPat,
+            CACHE_FOLDER: cacheFolder,
+            PROJECT_FOLDER: projectFolder
+        };
+
         // テンプレートファイルを読み込む
         let template = fs.readFileSync(dockercomposeTempletePath, 'utf8');
 

@@ -12,9 +12,19 @@ if [ -f /etc/environment ]; then
 fi
 # export PATH="$(uv python list | grep $PYTHON_VERSION | awk '{print $2}' | xargs dirname):$PATH"
 
-export UV_CACHE_DIR="$PREM_DIR/cache/uv"
-export RENV_PATHS_ROOT="$PREM_DIR/cache/renv"
-export ENV_DIR="$PREM_DIR/env"
+export UV_CACHE_DIR="$CACHE_DIR/cache/uv"
+export RENV_PATHS_ROOT="$CACHE_DIR/cache/renv"
+export ENV_DIR="$CACHE_DIR/env"
+
+if [ ! -r "$CACHE_DIR" ] || [ ! -w "$CACHE_DIR" ] || [ ! -x "$CACHE_DIR" ]; then
+    echo "Permission denied: the cache directory cannot be accessed with full permissions."
+    exit 1
+fi
+
+if [ ! -r "$PROJ_DIR" ] || [ ! -w "$PROJ_DIR" ] || [ ! -x "$PROJ_DIR" ]; then
+    echo "Permission denied: the project directory cannot be accessed with full permissions."
+    exit 1
+fi
 
 mkdir -p $UV_CACHE_DIR
 mkdir -p $RENV_PATHS_ROOT
