@@ -1,0 +1,3 @@
+[submodule "vscode-extension/work-env_v1.1.7"]
+	path = vscode-extension/work-env_v1.1.7
+	url = https://github.com/HU-bioinfo/work-env-extension.git
