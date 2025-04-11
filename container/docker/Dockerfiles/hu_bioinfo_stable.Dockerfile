@@ -46,7 +46,8 @@ USER user
 WORKDIR /home/user/
 
 RUN mkdir -p /home/user/cache && \
-    mkdir -p /home/user/proj
+    mkdir -p /home/user/proj && \
+    chown -R user:normal /home/user/cache /home/user/proj
 
 RUN cat /usr/local/bin/add_bashrc.sh >> /home/user/.bashrc
 # ENTRYPOINT ["/usr/local/bin/entrypoint.sh", "-i"]
