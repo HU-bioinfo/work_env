@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get update && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 groupadd -g 1001 normal 
 useradd -m -s /bin/bash -u 1001 -g 1001 user 
 passwd -d user
